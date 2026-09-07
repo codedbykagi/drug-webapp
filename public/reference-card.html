@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DrugTrace reference card</title>
+<style>
+  /* Print-first. Screen view is just a preview of the sheet. */
+  @page { size: A4; margin: 12mm; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #111; margin: 0; }
+  .sheet { width: 186mm; margin: 0 auto; }
+  h1 { font-size: 15pt; margin: 0 0 2mm; }
+  p  { font-size: 8.5pt; line-height: 1.45; margin: 0 0 3mm; max-width: 150mm; }
+  .card { border: 0.4mm solid #111; border-radius: 2mm; padding: 4mm; width: 88mm; box-sizing: border-box; }
+  .cards { display: flex; gap: 6mm; flex-wrap: wrap; }
+  .label { font-size: 7pt; letter-spacing: 0.06em; text-transform: uppercase; color: #444; margin-bottom: 2mm; }
+  .patches { display: flex; gap: 0; border: 0.3mm solid #111; }
+  .patch { flex: 1; aspect-ratio: 1 / 1.1; }
+  .patch span { display: block; font-size: 5.5pt; text-align: center; padding-top: 1mm; color: #fff; mix-blend-mode: difference; }
+  .well { margin-top: 3mm; border: 0.3mm dashed #666; height: 26mm; display: flex; align-items: center; justify-content: center;
+          font-size: 7pt; color: #777; border-radius: 1.5mm; }
+  .note { font-size: 6.5pt; color: #555; margin-top: 2mm; }
+  ol { font-size: 8.5pt; line-height: 1.5; padding-left: 5mm; max-width: 150mm; }
+  .warn { border-left: 0.8mm solid #111; padding-left: 3mm; font-size: 8pt; margin-top: 4mm; }
+  @media print { .noprint { display: none; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <h1>DrugTrace reference card</h1>
+  <p>
+    Print this on <strong>matte</strong> paper. Glossy stock throws specular highlights straight into the
+    camera and ruins the reading. Do not "fit to page" with colour management on — print at 100% with
+    any printer colour correction switched off, or the patches will not be the values the app expects.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="label">Card A — neutral only</div>
+      <div class="patches">
+        <div class="patch" style="background:#ffffff"><span>100%</span></div>
+        <div class="patch" style="background:#c0c0c0"><span>75%</span></div>
+        <div class="patch" style="background:#808080"><span>50%</span></div>
+        <div class="patch" style="background:#404040"><span>25%</span></div>
+        <div class="patch" style="background:#000000"><span>0%</span></div>
+      </div>
+      <div class="well">place the test pouch or well here</div>
+      <div class="note">
+        Tap the 50% patch as the reference in the app. This is all you need for the single-patch
+        white balance correction.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">Card B — neutral plus colour</div>
+      <div class="patches">
+        <div class="patch" style="background:#ffffff"><span></span></div>
+        <div class="patch" style="background:#808080"><span></span></div>
+        <div class="patch" style="background:#3a3a3a"><span></span></div>
+        <div class="patch" style="background:#c62828"><span></span></div>
+        <div class="patch" style="background:#1565c0"><span></span></div>
+        <div class="patch" style="background:#2e7d32"><span></span></div>
+        <div class="patch" style="background:#f9a825"><span></span></div>
+        <div class="patch" style="background:#6a1b9a"><span></span></div>
+      </div>
+      <div class="well">place the test pouch or well here</div>
+      <div class="note">
+        For the 3&times;3 matrix fit, which also corrects the camera's own channel crosstalk.
+        Not wired into the UI yet — see content.md, "Not built".
+      </div>
+    </div>
+  </div>
+
+  <h1 style="margin-top:8mm">How to use it</h1>
+  <ol>
+    <li>Lay the card flat next to the sample so both sit in the <em>same</em> light. A card in shade next to a pouch in sun is worse than no card.</li>
+    <li>Take the <strong>before</strong> photo with the card in frame.</li>
+    <li>Apply the reagent. Wait the reagent's stated read time.</li>
+    <li>Take the <strong>after</strong> photo from the same distance and angle, card still in frame.</li>
+    <li>On each photo, tap <em>Reference patch</em> on the grey square, then <em>Reaction point</em> on the pouch.</li>
+  </ol>
+
+  <div class="warn">
+    Do not let your own shadow, or the phone's, fall across the card. The app will warn you
+    ("patch area is not uniform") but it is easier to just step aside.
+  </div>
+
+  <p class="noprint" style="margin-top:6mm;color:#777">
+    Printed sizes: each card is 88&nbsp;mm wide, so two fit side by side on A4 and one fits in a shirt pocket.
+  </p>
+</div>
+</body>
+</html>

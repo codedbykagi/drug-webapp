@@ -1,0 +1,6 @@
+{
+  "name": "Drugtraceai",
+  "description": "Field documentation for presumptive colour reagent drug tests: lighting-corrected colour readings, a reagent reference registry, and hash-chained case records.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
