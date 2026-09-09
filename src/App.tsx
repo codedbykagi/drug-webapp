@@ -182,6 +182,7 @@ export default function App() {
       <div className="lg:pl-64 flex flex-col min-h-screen">
         <TopHeader
           calibration={calibration}
+          remote={usingRemoteStore}
           onOpenCalibrate={() => setIsCalibrationOpen(true)}
           onTriggerSync={() => void handleTriggerSync()}
           onToggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -190,7 +191,7 @@ export default function App() {
 
         <main className="pt-20 px-4 sm:px-6 pb-16 flex-1">
           {!loaded ? (
-            <div className="max-w-6xl mx-auto py-24 text-center font-mono text-xs text-white/40">
+            <div className="max-w-6xl mx-auto py-24 text-center text-xs text-white/40">
               Opening local store…
             </div>
           ) : (

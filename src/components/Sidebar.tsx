@@ -51,7 +51,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <Crosshair className="w-4 h-4 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="font-mono text-xs tracking-[0.24em] text-white font-bold leading-none uppercase">
+              <span className="text-xs tracking-[0.24em] text-white font-semibold leading-none uppercase">
                 DRUGTRACEAI
               </span>
               <span className="font-mono text-[9px] tracking-widest text-white/50 uppercase mt-1">
@@ -116,7 +116,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </div>
 
         <div className="flex flex-col gap-3">
-          <div className="glass-panel rounded p-3 flex flex-col gap-1.5 text-[10px] font-mono">
+          <div className="glass-panel rounded p-3 flex flex-col gap-1.5 text-[10px]">
             <div className="flex items-center justify-between text-white/50">
               <span>SYSTEM_STATE</span>
               <span className="inline-flex items-center gap-1.5 text-white font-semibold">
@@ -132,7 +132,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <div className="w-8 h-8 rounded border border-white/30 bg-white/10 flex items-center justify-center shrink-0">
               <Crosshair className="w-3.5 h-3.5 text-white" />
             </div>
-            <div className="flex flex-col min-w-0 font-mono">
+            <div className="flex flex-col min-w-0">
               <span className="text-xs text-white font-medium tracking-tight truncate">
                 DrugTrace
               </span>

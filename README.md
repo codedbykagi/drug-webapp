@@ -37,5 +37,5 @@ browser's IndexedDB and never leave the device — a complete, working setup on 
 
 ## Docs
 
-- `content.md` — architecture, design decisions, verification done, what remains. Read this first.
+- `context.md` — architecture, design decisions, verification done, what remains. Read this first.
 - `public/reference-card.html` — printable card.

@@ -111,6 +111,7 @@ export function normaliseReagent(
     hexColor: primaryHex ?? '#000000',
     colorStates,
     blankHex: normaliseHex(r.blankHex ?? r.negativeHex ?? r.blank),
+    nonReactive: toStringArray(r.nonReactive ?? r.noReaction ?? r.negatives),
     absorbancePeakNm: Number(r.absorbancePeakNm ?? r.peakNm ?? r.lambdaMax) || 0,
     slotNumber: String(r.slotNumber ?? ''),
     lotNumber: String(r.lotNumber ?? r.lot ?? '—'),

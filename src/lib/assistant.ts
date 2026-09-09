@@ -207,10 +207,18 @@ export function ask(rawQuery: string, reagents: ReagentProfile[]): Answer {
   if (/expir|expiry|out of date|shelf|old|valid/.test(lower)) return expiry(reagents);
   if (/how many|what.*(have|loaded)|overview|summar/.test(lower)) return overview(reagents);
 
-  // Colour word queries: "what turns purple", "what else looks blue". Answered
-  // by distance in Lab space against every reference colour, which reuses the
-  // same maths the matching engine runs on real photos.
-  const colourWord = tokens.find((t) => t in COLOUR_WORDS);
+  // Named reagent, e.g. "what does Marquis do".
+  const reagentHit = bestMatch(tokens, reagents.map((r) => r.name));
+  // Named substance, e.g. "how do I test for heroin".
+  const analyteHit = bestMatch(tokens, [...new Set(states.map((s) => s.analyte))]);
+
+  // Precedence between "a colour" and "a name containing a colour" is decided
+  // by phrasing, not by order. "what turns blue" is a colour question even
+  // though Fast Blue B is a reagent; "tell me about Scott (Cobalt Thiocyanate)"
+  // names a reagent even though cobalt is a colour.
+  const asksAboutColour = /\b(turns?|turning|looks?|looking|colou?rs?|shade|else|similar|near)\b/.test(lower);
+  const colourToken = tokens.find((t) => t in COLOUR_WORDS);
+  const colourWord = colourToken && (asksAboutColour || (!reagentHit && !analyteHit)) ? colourToken : undefined;
   if (colourWord) {
     const target = rgbToLab(hexToRgb(COLOUR_WORDS[colourWord])!);
     const near = states
@@ -223,22 +231,15 @@ export function ask(rawQuery: string, reagents: ReagentProfile[]): Answer {
     if (near.length) {
       return {
         kind: 'colour',
-        summary: `${plural(near.length, 'entry', 'entries')} in the registry sit near ${colourWord}, closest first. Distances are ΔE2000, the same measure used to score a photograph.`,
-        rows: near.map(({ s, d }) => ({ ...row(s), detail: `ΔE ${d.toFixed(1)}` })),
+        summary: `${plural(near.length, 'entry', 'entries')} in the registry sit near ${colourWord}, closest first. Distances are \u0394E2000, the same measure used to score a photograph.`,
+        rows: near.map(({ s, d }) => ({ ...row(s), detail: `\u0394E ${d.toFixed(1)}` })),
         sources: [...new Set(near.map((x) => x.s.reagent.name))],
         followups: near.slice(0, 2).map((x) => `Tell me about ${x.s.reagent.name}`),
       };
     }
   }
 
-  // Named reagent, e.g. "what does Marquis do".
-  const reagentHit = bestMatch(tokens, reagents.map((r) => r.name));
-  // Named substance, e.g. "how do I test for heroin".
-  const analyteHit = bestMatch(tokens, [...new Set(states.map((s) => s.analyte))]);
-
-  // Prefer whichever matched more strongly; a tie goes to the analyte, since
-  // "what detects X" is the more common field question than "describe X".
-  if (analyteHit && (!reagentHit || analyteHit.score >= reagentHit.score)) {
+  if (!colourWord && analyteHit && (!reagentHit || analyteHit.score >= reagentHit.score)) {
     const matches = states.filter((s) => s.analyte === analyteHit.value);
     return {
       kind: 'analyte',
@@ -255,7 +256,7 @@ export function ask(rawQuery: string, reagents: ReagentProfile[]): Answer {
     };
   }
 
-  if (reagentHit) {
+  if (!colourWord && reagentHit) {
     const reagent = reagents.find((r) => r.name === reagentHit.value)!;
     const matches = states.filter((s) => s.reagent.id === reagent.id);
     const days = daysUntil(reagent.expirationDate);
@@ -275,6 +276,39 @@ export function ask(rawQuery: string, reagents: ReagentProfile[]): Answer {
     };
   }
 
+  // A substance can be in the registry only as a documented non-reaction.
+  // "Marquis does not react with fentanyl" is exactly what an officer needs to
+  // hear, and is far better than keyword noise.
+  const nonReactive = bestMatch(tokens, [...new Set(reagents.flatMap((r) => r.nonReactive))]);
+  if (nonReactive) {
+    const carriers = reagents.filter((r) =>
+      r.nonReactive.some((n: string) => n.toLowerCase() === nonReactive.value.toLowerCase())
+    );
+    return {
+      kind: 'analyte',
+      summary: `${nonReactive.value} produces no colour change with ${plural(carriers.length, 'reagent')} in the registry, so a negative result there does not rule it out. Use a different test.`,
+      rows: carriers.map((r) => ({
+        reagent: r.name,
+        analyte: nonReactive.value,
+        colourLabel: 'No reaction',
+        hex: r.blankHex,
+        detail: 'documented negative',
+      })),
+      sources: carriers.map((r) => r.name),
+      followups: [],
+    };
+  }
+
+  // Prefer whichever matched more strongly; a tie goes to the analyte, since
+  // "what detects X" is the more common field question than "describe X".
+
+  // Colour word queries: "what turns purple", "what else looks blue". Answered
+  // by distance in Lab space against every reference colour, which reuses the
+  // same maths the matching engine runs on real photos.
+  //
+  // This runs *after* name matching because reagent names contain colour words:
+  // "Scott (Cobalt Thiocyanate)" would otherwise be read as a query about the
+  // colour cobalt and never reach the reagent it plainly names.
   // Fall back to scoring every entry on token overlap across all its text.
   const scored = states
     .map((s) => {

@@ -40,7 +40,7 @@ export const Toast: React.FC<ToastProps> = ({ toast }) => {
       <div className="w-6 h-6 rounded border border-white/20 bg-white/10 flex items-center justify-center shrink-0">
         {renderIcon(toast.icon)}
       </div>
-      <div className="flex flex-col font-mono">
+      <div className="flex flex-col">
         <span className="text-xs text-white font-semibold uppercase tracking-wider">
           {toast.title}
         </span>

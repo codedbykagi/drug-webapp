@@ -6,9 +6,8 @@ import {
   describeIlluminant,
   profileFromNeutral,
 } from '../../lib/calibration';
-import { applyGains, rgbToHex } from '../../lib/color';
+import { applyGains, rgbToHex, samplePatch } from '../../lib/color';
 import { decode, sampleRadius } from '../../lib/imaging';
-import { samplePatch } from '../../lib/color';
 import type { CalibrationData } from '../../types';
 
 interface Props {
@@ -48,6 +47,14 @@ export const CalibrationModal: React.FC<Props> = ({
     // camera.stop is stable; re-running on every render would kill the stream.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
+
+  const preview = useMemo(() => {
+    if (!profile) return null;
+    return {
+      raw: rgbToHex(profile.neutralRaw),
+      corrected: rgbToHex(applyGains(profile.neutralRaw, profile.gains)),
+    };
+  }, [profile]);
 
   if (!isOpen) return null;
 
@@ -127,13 +134,6 @@ export const CalibrationModal: React.FC<Props> = ({
     onTriggerToast('Calibration cleared', 'Readings will fall back to in-frame references', 'tune');
   };
 
-  const preview = useMemo(() => {
-    if (!profile) return null;
-    return {
-      raw: rgbToHex(profile.neutralRaw),
-      corrected: rgbToHex(applyGains(profile.neutralRaw, profile.gains)),
-    };
-  }, [profile]);
 
   return (
     <div
@@ -146,7 +146,7 @@ export const CalibrationModal: React.FC<Props> = ({
           boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.9), inset 0 1px 0 0 rgba(255, 255, 255, 0.25)',
         }}
       >
-        <div className="flex items-center justify-between border-b border-white/10 pb-3 font-mono">
+        <div className="flex items-center justify-between border-b border-white/10 pb-3">
           <div className="flex items-center gap-2.5">
             <div className="w-7 h-7 rounded border border-white/30 bg-white/10 flex items-center justify-center">
               <Sliders className="w-3.5 h-3.5 text-white" />
@@ -172,9 +172,15 @@ export const CalibrationModal: React.FC<Props> = ({
         </div>
 
         <div className="w-full h-44 rounded border border-white/15 bg-white/5 flex items-center justify-center relative overflow-hidden grid-mesh">
-          {camera.active ? (
-            <video ref={videoRef} autoPlay playsInline muted className="w-full h-full object-cover" />
-          ) : (
+          <video
+            ref={videoRef}
+            autoPlay
+            playsInline
+            muted
+            className={`absolute inset-0 w-full h-full object-cover ${camera.active ? 'z-10' : 'invisible'}`}
+          />
+
+          {camera.active ? null : (
             <div className="flex flex-col items-center gap-3 text-center px-6">
               <span className="text-[11px] text-white/50 leading-relaxed max-w-xs">
                 The camera measures the light instead of guessing it. Anything you know to be
@@ -223,7 +229,7 @@ export const CalibrationModal: React.FC<Props> = ({
             </button>
           )}
 
-          <div className="absolute bottom-2 left-3 font-mono text-[9px] text-white/60 flex items-center gap-1.5">
+          <div className="absolute bottom-2 left-3 text-[9px] text-white/60 flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-white" />
             <span>Centre box reads the reference</span>
           </div>
@@ -236,7 +242,7 @@ export const CalibrationModal: React.FC<Props> = ({
           </div>
         )}
 
-        <div className="flex flex-col gap-4 font-mono text-xs">
+        <div className="flex flex-col gap-4 text-xs">
           <div className="grid grid-cols-2 gap-4">
             <Stat label="Illuminant">
               {profile ? (
@@ -323,7 +329,7 @@ export const CalibrationModal: React.FC<Props> = ({
           </div>
         </div>
 
-        <div className="flex items-center justify-between border-t border-white/10 pt-4 font-mono text-xs gap-2">
+        <div className="flex items-center justify-between border-t border-white/10 pt-4 text-xs gap-2">
           {camera.active ? (
             <button
               type="button"

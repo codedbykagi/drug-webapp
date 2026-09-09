@@ -1,0 +1,923 @@
+[
+  {
+    "id": "rg-chen-s",
+    "name": "Chen's",
+    "chemicalMatrix": "Copper sulfate with sodium hydroxide",
+    "targetAnalytes": [
+      "Ephedrine"
+    ],
+    "hexColor": "#8a2be2",
+    "reactionColor": "Purple / Violet",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Purple / Violet",
+        "analyte": "Ephedrine",
+        "hex": "#8a2be2",
+        "atSeconds": 0,
+        "notes": "Copper complex formation for ephedrine. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p13 (2000). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-dille-koppanyi",
+    "name": "Dille-Koppanyi",
+    "chemicalMatrix": "Cobalt(II) acetate with isopropylamine",
+    "targetAnalytes": [
+      "Phenobarbital",
+      "Secobarbital"
+    ],
+    "hexColor": "#8a2be2",
+    "reactionColor": "Purple-Violet",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Purple-Violet",
+        "analyte": "Phenobarbital",
+        "hex": "#8a2be2",
+        "atSeconds": 0,
+        "notes": "Barbiturate class test. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p13 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Purple-Violet",
+        "analyte": "Secobarbital",
+        "hex": "#8a2be2",
+        "atSeconds": 0,
+        "notes": "Barbiturate ring detection reagent. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p13 (2000). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-dragendorff",
+    "name": "Dragendorff",
+    "chemicalMatrix": "Potassium bismuth iodide",
+    "targetAnalytes": [
+      "General Alkaloids"
+    ],
+    "hexColor": "#ff4500",
+    "reactionColor": "Orange-Red Precipitate",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Orange-Red Precipitate",
+        "analyte": "General Alkaloids",
+        "hex": "#ff4500",
+        "atSeconds": 0,
+        "notes": "General alkaloid screening test. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p8 (1998). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-duquenois-levine",
+    "name": "Duquenois-Levine",
+    "chemicalMatrix": "Vanillin and acetaldehyde in ethanol, then HCl, then chloroform",
+    "targetAnalytes": [
+      "CBD (Cannabidiol)",
+      "Cannabis / THC"
+    ],
+    "hexColor": "#8a2be2",
+    "reactionColor": "Violet / Blue",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Violet / Blue",
+        "analyte": "CBD (Cannabidiol)",
+        "hex": "#8a2be2",
+        "atSeconds": 120,
+        "notes": "Extracts into chloroform layer. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p10 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Purple / Violet",
+        "analyte": "Cannabis / THC",
+        "hex": "#8a2be2",
+        "atSeconds": 120,
+        "notes": "Purple transfers to organic layer. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p14 (1998). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-ehrlich-van-urk",
+    "name": "Ehrlich (Van Urk)",
+    "chemicalMatrix": "4-dimethylaminobenzaldehyde in acid",
+    "targetAnalytes": [
+      "DMT",
+      "LSD",
+      "Psilocin / Psilocybin"
+    ],
+    "hexColor": "#8a2be2",
+    "reactionColor": "Purple-Violet",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Purple-Violet",
+        "analyte": "DMT",
+        "hex": "#8a2be2",
+        "atSeconds": 180,
+        "notes": "Tryptamine class detection. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p15 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Deep Purple",
+        "analyte": "LSD",
+        "hex": "#360033",
+        "atSeconds": 180,
+        "notes": "Indole ring reaction. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p15 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Purple-Violet",
+        "analyte": "Psilocin / Psilocybin",
+        "hex": "#8a2be2",
+        "atSeconds": 180,
+        "notes": "Indole nucleus detection. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p15 (1998). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-fpn",
+    "name": "FPN",
+    "chemicalMatrix": "Ferric chloride with perchloric and nitric acid",
+    "targetAnalytes": [
+      "Chlorpromazine"
+    ],
+    "hexColor": "#ff4500",
+    "reactionColor": "Orange-Red",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Orange-Red",
+        "analyte": "Chlorpromazine",
+        "hex": "#ff4500",
+        "atSeconds": 10,
+        "notes": "Phenothiazine detection reagent. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p15 (2000). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-fast-blue-b",
+    "name": "Fast Blue B",
+    "chemicalMatrix": "",
+    "targetAnalytes": [
+      "THC / Cannabis"
+    ],
+    "hexColor": "#800020",
+    "reactionColor": "Red / Dark Violet",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Red / Dark Violet",
+        "analyte": "THC / Cannabis",
+        "hex": "#800020",
+        "atSeconds": 120,
+        "notes": "Specific dye test for cannabinoids. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p14 (1998). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-fast-blue-bb",
+    "name": "Fast Blue BB",
+    "chemicalMatrix": "",
+    "targetAnalytes": [
+      "THC / Cannabis"
+    ],
+    "hexColor": "#c71585",
+    "reactionColor": "Reddish Violet",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Reddish Violet",
+        "analyte": "THC / Cannabis",
+        "hex": "#c71585",
+        "atSeconds": 120,
+        "notes": "Azo coupling cannabinoid. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p14 (1998). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-ferric-chloride",
+    "name": "Ferric Chloride",
+    "chemicalMatrix": "Ferric chloride solution",
+    "targetAnalytes": [
+      "Aspirin (Salicylates)"
+    ],
+    "hexColor": "#8a2be2",
+    "reactionColor": "Violet / Purple",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Violet / Purple",
+        "analyte": "Aspirin (Salicylates)",
+        "hex": "#8a2be2",
+        "atSeconds": 0,
+        "notes": "Detects phenolic groups and salicylic acid derivatives. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p16 (2000). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-froehde",
+    "name": "Froehde",
+    "chemicalMatrix": "Molybdic acid / sodium molybdate in concentrated sulfuric acid",
+    "targetAnalytes": [
+      "MDMA",
+      "Morphine"
+    ],
+    "hexColor": "#0a1172",
+    "reactionColor": "Black / Blue",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Black / Blue",
+        "analyte": "MDMA",
+        "hex": "#0a1172",
+        "atSeconds": 5,
+        "notes": "Rapid dark color change. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p11 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Purple-Violet",
+        "analyte": "Morphine",
+        "hex": "#8a2be2",
+        "atSeconds": 5,
+        "notes": "Turns dark green over time. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p11 (2000). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-ghb-reagent",
+    "name": "GHB Reagent",
+    "chemicalMatrix": "",
+    "targetAnalytes": [
+      "GHB (Gamma-Hydroxybutyrate)"
+    ],
+    "hexColor": "#556b2f",
+    "reactionColor": "Green / Brown",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Green / Brown",
+        "analyte": "GHB (Gamma-Hydroxybutyrate)",
+        "hex": "#556b2f",
+        "atSeconds": 10,
+        "notes": "Chromium trioxide oxidation test. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p16 (2000). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-liebermann",
+    "name": "Liebermann",
+    "chemicalMatrix": "Sodium nitrite in concentrated sulfuric acid",
+    "targetAnalytes": [
+      "Acetaminophen",
+      "Amphetamine",
+      "Codeine",
+      "Heroin",
+      "MDMA",
+      "Mephedrone (4-MMC)",
+      "Methadone",
+      "Methamphetamine"
+    ],
+    "hexColor": "#420039",
+    "reactionColor": "Dark Violet",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Dark Violet",
+        "analyte": "Acetaminophen",
+        "hex": "#420039",
+        "atSeconds": 5,
+        "notes": "Strong reaction; can mask active drug. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p12 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Red-Orange",
+        "analyte": "Amphetamine",
+        "hex": "#ff4500",
+        "atSeconds": 5,
+        "notes": "Primary amine reaction. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p11 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Black",
+        "analyte": "Codeine",
+        "hex": "#000000",
+        "atSeconds": 5,
+        "notes": "Opiate oxidation. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p11 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Black",
+        "analyte": "Heroin",
+        "hex": "#000000",
+        "atSeconds": 5,
+        "notes": "Diacetylmorphine test. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p11 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Black",
+        "analyte": "MDMA",
+        "hex": "#000000",
+        "atSeconds": 5,
+        "notes": "Secondary amine oxidation. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p12 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Orange / Red",
+        "analyte": "Mephedrone (4-MMC)",
+        "hex": "#ff4500",
+        "atSeconds": 5,
+        "notes": "Strong color shift for cathinones. Source: UNODC Recommended Methods for Identification of Sy, p18 (2012). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Orange / Brown",
+        "analyte": "Methadone",
+        "hex": "#cc5500",
+        "atSeconds": 10,
+        "notes": "Opioid class test. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p12 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Red-Orange",
+        "analyte": "Methamphetamine",
+        "hex": "#ff4500",
+        "atSeconds": 5,
+        "notes": "Secondary amine reaction. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p11 (2000). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-mandelin",
+    "name": "Mandelin",
+    "chemicalMatrix": "Ammonium vanadate in concentrated sulfuric acid",
+    "targetAnalytes": [
+      "Ketamine",
+      "Methadone",
+      "PMA (Paramethoxyamphetamine)"
+    ],
+    "hexColor": "#cc5500",
+    "reactionColor": "Orange / Brown",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Orange / Brown",
+        "analyte": "Ketamine",
+        "hex": "#cc5500",
+        "atSeconds": 10,
+        "notes": "Dissociative screening test. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p12 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Dark Blue / Green",
+        "analyte": "Methadone",
+        "hex": "#004040",
+        "atSeconds": 10,
+        "notes": "Synthetic opioid screening. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p12 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Reddish Brown",
+        "analyte": "PMA (Paramethoxyamphetamine)",
+        "hex": "#8b0000",
+        "atSeconds": 10,
+        "notes": "Phenethylamine toxic derivative test. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p13 (1998). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-marquis",
+    "name": "Marquis",
+    "chemicalMatrix": "Formaldehyde in concentrated sulfuric acid",
+    "targetAnalytes": [
+      "2C-B",
+      "2C-E",
+      "2C-I",
+      "5-MeO-DMT",
+      "Amphetamine",
+      "Aspirin (Acetylsalicylic Acid)",
+      "Codeine",
+      "DOC",
+      "DOI",
+      "Heroin",
+      "Lactose / Glucose",
+      "MDMA",
+      "MDPV",
+      "Mephedrone (4-MMC)",
+      "Methamphetamine",
+      "Morphine",
+      "Paracetamol (Acetaminophen)",
+      "Phenacetin",
+      "Procaine",
+      "Quinine",
+      "Synthetic Cannabinoids (JWH-018)",
+      "alpha-PVP (Flakka)"
+    ],
+    "hexColor": "#9acd32",
+    "reactionColor": "Yellow to Green",
+    "blankHex": "#e0e0e0",
+    "nonReactive": [
+      "4-FA",
+      "Boric Acid / Starch",
+      "Caffeine",
+      "Cocaine",
+      "Fentanyl",
+      "Levamisole",
+      "Lidocaine"
+    ],
+    "colorStates": [
+      {
+        "label": "Yellow to Green",
+        "analyte": "2C-B",
+        "hex": "#9acd32",
+        "atSeconds": 10,
+        "notes": "Phenethylamine derivative test. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p12 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Yellowish Green",
+        "analyte": "2C-E",
+        "hex": "#9acd32",
+        "atSeconds": 10,
+        "notes": "Halogenated phenethylamine. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p12 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Yellow to Black",
+        "analyte": "2C-I",
+        "hex": "#000000",
+        "atSeconds": 10,
+        "notes": "Substituted phenethylamine. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p12 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Yellow to Black",
+        "analyte": "5-MeO-DMT",
+        "hex": "#000000",
+        "atSeconds": 5,
+        "notes": "Tryptamine ring reaction. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p15 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Dark Brown",
+        "analyte": "Amphetamine",
+        "hex": "#654321",
+        "atSeconds": 5,
+        "notes": "Reddish-orange transition. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p12 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Pink / Red",
+        "analyte": "Aspirin (Acetylsalicylic Acid)",
+        "hex": "#ff0000",
+        "atSeconds": 10,
+        "notes": "Slowly turns deep red / cherry red. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p10 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Dark Violet",
+        "analyte": "Codeine",
+        "hex": "#420039",
+        "atSeconds": 10,
+        "notes": "Opiate class reaction. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p12 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Green to Dark Blue",
+        "analyte": "DOC",
+        "hex": "#00008b",
+        "atSeconds": 10,
+        "notes": "Substituted amphetamine. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p12 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Yellowish Green",
+        "analyte": "DOI",
+        "hex": "#9acd32",
+        "atSeconds": 10,
+        "notes": "Substituted amphetamine. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p12 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Dark Violet",
+        "analyte": "Heroin",
+        "hex": "#420039",
+        "atSeconds": 10,
+        "notes": "Diacetylmorphine reaction. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p12 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Brown",
+        "analyte": "Lactose / Glucose",
+        "hex": "#a52a2a",
+        "atSeconds": 30,
+        "notes": "Slow charring / caramelization by H2SO4. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p12 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Black",
+        "analyte": "MDMA",
+        "hex": "#000000",
+        "atSeconds": 5,
+        "notes": "Rapid color development. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p12 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Yellowish Brown",
+        "analyte": "MDPV",
+        "hex": "#967969",
+        "atSeconds": 10,
+        "notes": "Substituted cathinone reaction. Source: UNODC Recommended Methods for Identification of Sy, p19 (2012). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Bright Yellow",
+        "analyte": "Mephedrone (4-MMC)",
+        "hex": "#ffff00",
+        "atSeconds": 10,
+        "notes": "Synthetic cathinone screening. Source: UNODC Recommended Methods for Identification of Sy, p18 (2012). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Dark Brown",
+        "analyte": "Methamphetamine",
+        "hex": "#654321",
+        "atSeconds": 5,
+        "notes": "Deep reddish-orange. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p12 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Dark Violet",
+        "analyte": "Morphine",
+        "hex": "#420039",
+        "atSeconds": 10,
+        "notes": "Opiate class reaction. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p12 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Pale Pink",
+        "analyte": "Paracetamol (Acetaminophen)",
+        "hex": "#ffd1dc",
+        "atSeconds": 30,
+        "notes": "Very mild or delayed color shift. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p10 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Dark Violet",
+        "analyte": "Phenacetin",
+        "hex": "#420039",
+        "atSeconds": 10,
+        "notes": "Strong color transition. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p10 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Pale Yellow",
+        "analyte": "Procaine",
+        "hex": "#fffacd",
+        "atSeconds": 10,
+        "notes": "Light yellow shift. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p10 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Pale Yellow",
+        "analyte": "Quinine",
+        "hex": "#fffacd",
+        "atSeconds": 10,
+        "notes": "Light yellow development. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p10 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Yellow to Brown",
+        "analyte": "Synthetic Cannabinoids (JWH-018)",
+        "hex": "#a52a2a",
+        "atSeconds": 10,
+        "notes": "NPS synthetic cannabinoid. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p10 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Pale Yellow",
+        "analyte": "alpha-PVP (Flakka)",
+        "hex": "#fffacd",
+        "atSeconds": 10,
+        "notes": "Cathinone class reaction. Source: UNODC Recommended Methods for Identification of Sy, p19 (2012). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "Documented non-reactions: 4-FA, Boric Acid / Starch, Caffeine, Cocaine, Fentanyl, Levamisole, Lidocaine. All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-mayer-s",
+    "name": "Mayer's",
+    "chemicalMatrix": "Potassium mercuric iodide",
+    "targetAnalytes": [
+      "General Alkaloids"
+    ],
+    "hexColor": "#fffdd0",
+    "reactionColor": "White/Cream Precipitate",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "White/Cream Precipitate",
+        "analyte": "General Alkaloids",
+        "hex": "#fffdd0",
+        "atSeconds": 0,
+        "notes": "Precipitation test for tertiary amines. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p8 (1998). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-mecke",
+    "name": "Mecke",
+    "chemicalMatrix": "Selenous acid in concentrated sulfuric acid",
+    "targetAnalytes": [
+      "Heroin",
+      "Mescaline",
+      "Psilocybin"
+    ],
+    "hexColor": "#006400",
+    "reactionColor": "Deep Green",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Deep Green",
+        "analyte": "Heroin",
+        "hex": "#006400",
+        "atSeconds": 5,
+        "notes": "Diacetylmorphine reaction. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p11 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Orange-Brown",
+        "analyte": "Mescaline",
+        "hex": "#cc5500",
+        "atSeconds": 10,
+        "notes": "Psychedelic phenethylamine test. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p14 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Greenish Blue",
+        "analyte": "Psilocybin",
+        "hex": "#008080",
+        "atSeconds": 10,
+        "notes": "Tryptamine derivative test. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p15 (1998). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-morris",
+    "name": "Morris",
+    "chemicalMatrix": "",
+    "targetAnalytes": [
+      "Ketamine"
+    ],
+    "hexColor": "#8a2be2",
+    "reactionColor": "Violet / Purple",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Violet / Purple",
+        "analyte": "Ketamine",
+        "hex": "#8a2be2",
+        "atSeconds": 0,
+        "notes": "Specific test for Ketamine HCl. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p12 (2000). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-nitric-acid",
+    "name": "Nitric Acid",
+    "chemicalMatrix": "Concentrated nitric acid",
+    "targetAnalytes": [
+      "Codeine",
+      "Morphine"
+    ],
+    "hexColor": "#ffff00",
+    "reactionColor": "Yellow",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Yellow",
+        "analyte": "Codeine",
+        "hex": "#ffff00",
+        "atSeconds": 5,
+        "notes": "Slow yellow transition. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p12 (1998). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Crimson Red",
+        "analyte": "Morphine",
+        "hex": "#dc143c",
+        "atSeconds": 5,
+        "notes": "Distinguishes Morphine from Heroin. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p12 (1998). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-robadope",
+    "name": "Robadope",
+    "chemicalMatrix": "",
+    "targetAnalytes": [
+      "Amphetamine"
+    ],
+    "hexColor": "#c71585",
+    "reactionColor": "Red / Violet",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Red / Violet",
+        "analyte": "Amphetamine",
+        "hex": "#c71585",
+        "atSeconds": 10,
+        "notes": "Specific for primary amines. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p14 (2000). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-scott-cobalt-thiocyanate",
+    "name": "Scott (Cobalt Thiocyanate)",
+    "chemicalMatrix": "Cobalt(II) thiocyanate, with HCl and chloroform stages",
+    "targetAnalytes": [
+      "Cocaine Base (Crack)",
+      "Cocaine HCl",
+      "Lidocaine",
+      "Procaine"
+    ],
+    "hexColor": "#0000ff",
+    "reactionColor": "Blue (Soluble in Chloroform)",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Blue (Soluble in Chloroform)",
+        "analyte": "Cocaine Base (Crack)",
+        "hex": "#0000ff",
+        "atSeconds": 5,
+        "notes": "Distinguishes salt from base with HCl addition. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p10 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Blue (Precipitate)",
+        "analyte": "Cocaine HCl",
+        "hex": "#0000ff",
+        "atSeconds": 5,
+        "notes": "Three-step cobalt thiocyanate test. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p10 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Dark Blue",
+        "analyte": "Lidocaine",
+        "hex": "#00008b",
+        "atSeconds": 0,
+        "notes": "False positive for Cocaine in Step 1. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p8 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Dark Blue",
+        "analyte": "Procaine",
+        "hex": "#00008b",
+        "atSeconds": 0,
+        "notes": "False positive for Cocaine in Step 1. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p8 (2000). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-simon-s",
+    "name": "Simon's",
+    "chemicalMatrix": "Sodium nitroprusside with acetaldehyde and sodium carbonate",
+    "targetAnalytes": [
+      "MDMA",
+      "Methamphetamine"
+    ],
+    "hexColor": "#00008b",
+    "reactionColor": "Deep Blue",
+    "blankHex": "#ffffff",
+    "nonReactive": [
+      "Amphetamine"
+    ],
+    "colorStates": [
+      {
+        "label": "Deep Blue",
+        "analyte": "MDMA",
+        "hex": "#00008b",
+        "atSeconds": 5,
+        "notes": "Specific test for secondary amines. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p14 (2000). Colour value is an estimate from the written description, not a measurement."
+      },
+      {
+        "label": "Deep Blue",
+        "analyte": "Methamphetamine",
+        "hex": "#00008b",
+        "atSeconds": 10,
+        "notes": "Secondary amine specific. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p14 (2000). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "Documented non-reactions: Amphetamine. All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-zimmermann",
+    "name": "Zimmermann",
+    "chemicalMatrix": "1,3-dinitrobenzene with potassium hydroxide",
+    "targetAnalytes": [
+      "Diazepam"
+    ],
+    "hexColor": "#d87093",
+    "reactionColor": "Pinkish Purple",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Pinkish Purple",
+        "analyte": "Diazepam",
+        "hex": "#d87093",
+        "atSeconds": 120,
+        "notes": "Benzodiazepine class test. Source: UNODC Rapid Testing Methods for Drugs of Abuse, p16 (1998). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  },
+  {
+    "id": "rg-zwikker",
+    "name": "Zwikker",
+    "chemicalMatrix": "Copper sulfate with pyridine",
+    "targetAnalytes": [
+      "Pentobarbital"
+    ],
+    "hexColor": "#8a2be2",
+    "reactionColor": "Purple-Violet",
+    "blankHex": "#ffffff",
+    "nonReactive": [],
+    "colorStates": [
+      {
+        "label": "Purple-Violet",
+        "analyte": "Pentobarbital",
+        "hex": "#8a2be2",
+        "atSeconds": 0,
+        "notes": "Barbiturate screening reagent. Source: NIJ Color Test Reagents/Kits for Preliminary Ide, p13 (2000). Colour value is an estimate from the written description, not a measurement."
+      }
+    ],
+    "description": "All colour values are estimated from written descriptions in the cited sources. Replace with measured values before relying on a match.",
+    "lotNumber": "",
+    "expirationDate": "",
+    "tempLimitC": ""
+  }
+]

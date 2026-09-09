@@ -7,15 +7,12 @@ import {
   ChevronDown,
   ChevronUp,
   Clock,
+  Crosshair,
   Eye,
   FileText,
-  FlaskConical,
   Lock,
-  MapPin,
   Printer,
-  ShieldCheck,
   Sliders,
-  Sparkles,
   Sun,
 } from 'lucide-react';
 
@@ -33,100 +30,61 @@ const panel = {
 
 const STEPS = [
   {
-    icon: FlaskConical,
-    title: 'Load the reagent registry',
-    body: 'Open Reagents and import your data sheet as JSON or CSV. Nothing ships preloaded, because reference colours are evidence and the app will not invent them. Until the registry has entries, photos are still measured and filed, but there is nothing to compare them against.',
-    tags: ['Once per kit', 'Reagents page'],
-  },
-  {
     icon: Sun,
-    title: 'Put the reference card in frame',
-    body: 'Lay the printed grey card flat beside the sample so both sit in the same light. This is what makes readings comparable between daylight, an office and a torch at night. A card in shade next to a pouch in sun is worse than no card at all.',
-    tags: ['Every photo', 'Matte print'],
+    title: 'Card in frame',
+    body: 'Lay the printed grey card flat beside the sample so both sit in the same light. This is what makes a reading taken at a roadside comparable with one taken in an office.',
   },
   {
     icon: Camera,
-    title: 'Capture before, then after',
-    body: 'Photograph the sample before the reagent goes on. Apply the reagent, wait the read time your registry lists, then photograph again from the same distance and angle. Two frames let the app tell a real reaction apart from a pouch that simply looks dark.',
-    tags: ['Two frames', 'Same framing'],
+    title: 'Photograph before, then after',
+    body: 'One frame before the reagent goes on. Apply it, wait the read time your registry lists, then a second frame from the same distance and angle.',
   },
   {
-    icon: Eye,
-    title: 'Mark the two points',
-    body: 'On each photo, tap Reference patch on the grey square, then Reaction point on the pouch. The app measures the card to work out what the light did, cancels it, and reads the reaction colour with that correction applied.',
-    tags: ['Tap to place', 'Re-tap to adjust'],
+    icon: Crosshair,
+    title: 'Tap the card, then the sample',
+    body: 'On each photo, tap Reference patch on the grey square and Reaction point on the sample. This is what performs the correction, and the photo tells you when it is still missing.',
   },
   {
     icon: FileText,
-    title: 'Fill in the details and file it',
-    body: 'Add your name, designation, station and the reason for the test. Filing captures GPS and timestamp automatically and writes the record to this device, along with both photographs.',
-    tags: ['Saved offline', 'GPS and time'],
-  },
-  {
-    icon: Printer,
-    title: 'Print the custody report',
-    body: 'Any filed case can be reopened from the case log and printed as a chain-of-custody record carrying the officer details, both readings, the location fix and the record hash.',
-    tags: ['From case log', 'Any time'],
+    title: 'Add your details and file it',
+    body: 'Name, designation, station and reason. Location and timestamp are captured for you. Filing writes the record and both photographs to this device.',
   },
 ];
 
 const BENEFITS = [
   {
-    icon: Eye,
-    title: 'Takes the eye out of the judgement',
-    body: 'Two officers can disagree about whether a pouch went purple or dark brown. The app reports a measured colour distance instead of an opinion, and the same photo always gives the same number.',
-  },
-  {
     icon: Sun,
     title: 'Same reading under any light',
-    body: 'A reference surface of known reflectance sits in every photo, so the lighting is measured rather than guessed. Daylight, fluorescent and torchlight are all cancelled the same way.',
+    body: 'A surface of known reflectance sits in every photo, so the lighting is measured rather than guessed. Daylight, fluorescent and torchlight are cancelled the same way.',
   },
   {
-    icon: MapPin,
-    title: 'Location and time, captured not typed',
-    body: 'GPS coordinates with an accuracy figure and a UTC timestamp are attached when the record is filed. Neither is entered by hand, so neither can be misremembered later.',
+    icon: Eye,
+    title: 'A number instead of an opinion',
+    body: 'Two officers can disagree about whether a pouch went purple or dark brown. The same photograph always produces the same measured colour distance.',
   },
   {
     icon: Lock,
-    title: 'Tamper-evident records',
-    body: 'Each record is hashed over its data and its photographs, and each hash is folded into the next. Altering any past record breaks every record filed after it, and the case log shows this.',
-  },
-  {
-    icon: Sparkles,
-    title: 'The registry, searchable in the field',
-    body: 'Ask the registry answers questions about reagents, substances and colours straight from your loaded data. It needs no signal and reports only what is loaded.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Honest about being presumptive',
-    body: 'The app reports a colour distance, never a confidence percentage. A colour distance is a measurement; a percentage would imply a probability this kind of test cannot support.',
+    title: 'Records that show tampering',
+    body: 'Each record is hashed over its data and its photographs, and each hash is folded into the next. Altering an old record breaks every record filed after it.',
   },
 ];
 
 const FAQS = [
   {
-    q: 'What if I do not have the printed card with me?',
-    a: 'Anything you know to be neutral works. Plain white office paper is the usual substitute and a proper grey card is better. With no reference at all the app still records the photo, the metadata and an uncorrected colour, and labels that reading as uncorrected rather than pretending otherwise. You can also read a card once through Lighting reference and reuse that profile, though it assumes the light has not changed since.',
-  },
-  {
-    q: 'Where does the data go?',
-    a: 'It stays on this device, in the browser storage, and survives closing the app or restarting the phone. There is no automatic upload. A sync server ships with the project for departments that want records centralised, but it is off unless configured, and even then the device is written first so a dropped connection cannot lose a record.',
+    q: 'What if I do not have the card with me?',
+    a: 'Anything you know to be neutral works, and plain white paper is the usual substitute. With no reference at all the photo, the metadata and the colour are still recorded, but the reading is marked uncorrected and should not be compared against readings taken under different light.',
   },
   {
     q: 'Does this identify the substance?',
-    a: 'No. Colour reagent tests are presumptive. This app makes the reading repeatable and the documentation rigorous. It does not replace laboratory confirmation, and a positive result here is a reason to send the sample onward, not a conclusion.',
+    a: 'No. Colour reagent tests are presumptive. A result here is a reason to send the sample for laboratory confirmation, not a conclusion. Some reagents cannot separate closely related substances at all, and the app shows every candidate rather than picking one.',
   },
   {
-    q: 'What does the delta E number mean?',
-    a: 'It is the distance between the measured colour and a reference colour from your registry, using CIEDE2000, the international standard for colour difference. Below about 2 the difference is invisible to the eye. Around 5 you would notice it side by side. Above 10 the colours are plainly different.',
-  },
-  {
-    q: 'Why does it want two photographs?',
-    a: 'Comparing the before frame against the after frame shows whether the reagent did anything at all. If the two sit close together, no reaction occurred and the result is negative regardless of how dark or coloured the pouch looks on its own.',
+    q: 'What does the ΔE number mean?',
+    a: 'The distance between the measured colour and a reference colour in your registry. Below about 2 the difference is invisible to the eye, around 5 you would notice it side by side, above 10 the colours are plainly different.',
   },
   {
     q: 'The camera or location will not start.',
-    a: 'Browsers only allow camera and location access on a secure connection. On a phone the page has to be served over https, or opened through localhost on the same machine. Over a plain http address on the local network both will silently do nothing.',
+    a: 'Browsers only allow camera and location access over a secure connection. The page has to be served over https, or opened through localhost on the same machine. Over a plain http address on a local network both will silently do nothing.',
   },
 ];
 
@@ -146,23 +104,22 @@ export const HowToUseScreen: React.FC<HowToUseScreenProps> = ({
     <div id="how-to-use-screen" className="max-w-6xl mx-auto flex flex-col gap-8 pb-12">
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
         <div className="flex flex-col gap-1.5">
-          <div className="flex items-center gap-2 text-[11px] font-mono text-white/50 tracking-wider">
+          <div className="flex items-center gap-2 text-[11px] text-white/50 tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
             <span>FIELD GUIDE</span>
           </div>
-          <h1 className="text-2xl lg:text-3xl font-bold text-white tracking-tight font-sans uppercase">
-            HOW TO USE
+          <h1 className="text-2xl lg:text-3xl font-semibold text-white tracking-tight">
+            How to use
           </h1>
           <p className="text-xs text-white/60 max-w-2xl leading-relaxed">
-            What this app does, how to take a reading that holds up, and what the numbers on the
-            result panel actually mean.
+            How to take a reading that holds up, and what the numbers mean.
           </p>
         </div>
 
         <button
           type="button"
           onClick={handlePrintGuide}
-          className="flex items-center gap-2 px-4 py-2 rounded border border-white/20 bg-white/5 hover:bg-white/15 text-white font-mono text-xs transition-all self-start shrink-0"
+          className="flex items-center gap-2 px-4 py-2 rounded border border-white/20 bg-white/5 hover:bg-white/15 text-white text-xs transition-all self-start shrink-0"
         >
           <Printer className="w-3.5 h-3.5" />
           <span>Print this guide</span>
@@ -217,10 +174,10 @@ export const HowToUseScreen: React.FC<HowToUseScreenProps> = ({
 
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between border-b border-white/10 pb-2">
-          <h2 className="text-base font-bold text-white tracking-wide font-sans uppercase">
+          <h2 className="text-base font-semibold text-white tracking-tight">
             Step by step
           </h2>
-          <span className="font-mono text-xs text-white/40">{STEPS.length} STEPS</span>
+          <span className="text-xs text-white/40">{STEPS.length} STEPS</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -235,25 +192,15 @@ export const HowToUseScreen: React.FC<HowToUseScreenProps> = ({
                   <div className="w-9 h-9 rounded-lg border border-white/25 bg-white/5 flex items-center justify-center">
                     <step.icon className="w-4 h-4 text-white" />
                   </div>
-                  <span className="font-mono text-[10px] text-white/35 tracking-wider">
+                  <span className="text-[10px] text-white/35 tracking-wider">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                 </div>
 
-                <h3 className="text-sm font-bold text-white tracking-tight">{step.title}</h3>
+                <h3 className="text-sm font-semibold text-white tracking-tight">{step.title}</h3>
                 <p className="text-xs text-white/60 leading-relaxed">{step.body}</p>
               </div>
 
-              <div className="flex flex-wrap gap-1.5 border-t border-white/10 pt-3">
-                {step.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="font-mono text-[9px] uppercase tracking-wider text-white/50 border border-white/12 bg-white/[0.03] px-2 py-0.5 rounded"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
             </div>
           ))}
         </div>
@@ -261,12 +208,12 @@ export const HowToUseScreen: React.FC<HowToUseScreenProps> = ({
 
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-1.5 border-b border-white/10 pb-2">
-          <h2 className="text-xl font-bold text-white tracking-tight font-sans">
+          <h2 className="text-xl font-semibold text-white tracking-tight">
             What this changes
           </h2>
           <p className="text-xs text-white/50 max-w-2xl leading-relaxed">
-            The chemistry is unchanged. What changes is that the reading is measured rather than
-            eyeballed, and the paperwork writes itself.
+            The chemistry is unchanged. The reading is measured rather than eyeballed, and the
+            paperwork writes itself.
           </p>
         </div>
 
@@ -289,7 +236,7 @@ export const HowToUseScreen: React.FC<HowToUseScreenProps> = ({
 
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between border-b border-white/10 pb-2">
-          <h2 className="text-base font-bold text-white tracking-wide font-sans uppercase">
+          <h2 className="text-base font-semibold text-white tracking-tight">
             Common questions
           </h2>
           <Clock className="w-4 h-4 text-white/30" />
@@ -326,7 +273,7 @@ export const HowToUseScreen: React.FC<HowToUseScreenProps> = ({
       </div>
 
       <div className="glass-panel rounded-lg p-4 flex flex-col sm:flex-row items-center justify-between gap-4 border border-white/15 bg-black/60">
-        <div className="flex items-center gap-3 font-mono text-xs">
+        <div className="flex items-center gap-3 text-xs">
           <div className="w-8 h-8 rounded border border-white/20 bg-white/5 flex items-center justify-center">
             <Lock className="w-4 h-4 text-white" />
           </div>
@@ -338,7 +285,7 @@ export const HowToUseScreen: React.FC<HowToUseScreenProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center gap-2.5 font-mono text-xs w-full sm:w-auto">
+        <div className="flex items-center gap-2.5 text-xs w-full sm:w-auto">
           <button
             type="button"
             onClick={onOpenCalibration}

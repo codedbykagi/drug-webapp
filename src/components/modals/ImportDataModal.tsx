@@ -88,7 +88,7 @@ export const ImportDataModal: React.FC<Props> = ({
           boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.9), inset 0 1px 0 0 rgba(255, 255, 255, 0.25)',
         }}
       >
-        <div className="flex items-center justify-between border-b border-white/10 pb-3 font-mono">
+        <div className="flex items-center justify-between border-b border-white/10 pb-3">
           <div className="flex items-center gap-2.5">
             <div className="w-7 h-7 rounded border border-white/30 bg-white/10 flex items-center justify-center">
               <Upload className="w-3.5 h-3.5 text-white" />
@@ -112,7 +112,7 @@ export const ImportDataModal: React.FC<Props> = ({
           <button
             type="button"
             onClick={() => fileRef.current?.click()}
-            className="flex items-center justify-center gap-2 px-4 py-3 rounded border border-dashed border-white/25 bg-white/[0.03] hover:bg-white/[0.08] hover:border-white/40 text-white transition-all font-mono text-[11px]"
+            className="flex items-center justify-center gap-2 px-4 py-3 rounded border border-dashed border-white/25 bg-white/[0.03] hover:bg-white/[0.08] hover:border-white/40 text-white transition-all text-[11px]"
           >
             <FileText className="w-3.5 h-3.5" />
             <span>{fileName ?? 'Choose a .json or .csv file'}</span>
@@ -130,7 +130,7 @@ export const ImportDataModal: React.FC<Props> = ({
           />
         </div>
 
-        <div className="flex flex-col gap-2 font-mono text-xs">
+        <div className="flex flex-col gap-2 text-xs">
           <div className="flex items-center justify-between text-[11px] gap-2">
             <span className="text-white/60">Or paste it here</span>
             <div className="flex items-center gap-2">
@@ -178,12 +178,12 @@ export const ImportDataModal: React.FC<Props> = ({
               setRawText(e.target.value);
               setError(null);
             }}
-            className="glass-input rounded font-mono text-[11px] p-3 text-white placeholder-white/30 w-full resize-y"
+            className="glass-input rounded text-[11px] p-3 text-white placeholder-white/30 w-full resize-y"
           />
         </div>
 
         {existingCount > 0 && (
-          <div className="flex items-center justify-between font-mono text-[11px] gap-3">
+          <div className="flex items-center justify-between text-[11px] gap-3">
             <span className="text-white/60">
               {existingCount} reagent{existingCount === 1 ? '' : 's'} already loaded
             </span>
@@ -212,7 +212,7 @@ export const ImportDataModal: React.FC<Props> = ({
         )}
 
         {issues.length > 0 && (
-          <div className="flex flex-col gap-1 max-h-32 overflow-y-auto font-mono text-[10px] text-white/60 border border-white/10 rounded p-2.5">
+          <div className="flex flex-col gap-1 max-h-32 overflow-y-auto text-[10px] text-white/60 border border-white/10 rounded p-2.5">
             <span className="text-white/40 uppercase tracking-wider">
               {issues.length} entr{issues.length === 1 ? 'y' : 'ies'} needed attention
             </span>
@@ -224,7 +224,7 @@ export const ImportDataModal: React.FC<Props> = ({
           </div>
         )}
 
-        <div className="flex items-center justify-end gap-2 border-t border-white/10 pt-3 font-mono text-xs">
+        <div className="flex items-center justify-end gap-2 border-t border-white/10 pt-3 text-xs">
           <button
             type="button"
             onClick={onClose}

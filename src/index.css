@@ -13,6 +13,12 @@
   }
 }
 
+/* Two typefaces, one job each.
+   Inter carries every piece of human language: headings, prose, labels,
+   buttons. JetBrains Mono carries only machine-produced values — hex codes,
+   deltaE figures, coordinates, timestamps, hashes, case references. Applying
+   font-mono to a container cascades it onto prose and is what made the
+   typography look arbitrary; put it on the value span itself. */
 .font-mono {
   font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
@@ -65,4 +71,50 @@
 * {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Print / Save-as-PDF.
+   window.print() would otherwise send the whole app to the printer: sidebar,
+   modal backdrop, the lot. Everything is hidden and only the voucher is
+   promoted, which is the one reliable way to do this across browsers.
+   print-color-adjust keeps the colour swatches and photographs, which Chrome
+   strips by default as "background graphics". */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #printable-custody-voucher,
+  #printable-custody-voucher * {
+    visibility: visible;
+  }
+
+  #printable-custody-voucher {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background: #fff;
+    color: #000;
+  }
+
+  #printable-custody-voucher img,
+  #printable-custody-voucher [data-swatch] {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Keep a photo and its caption on the same sheet. */
+  #printable-custody-voucher figure {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  @page {
+    margin: 14mm;
+  }
 }

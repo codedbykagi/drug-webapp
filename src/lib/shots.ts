@@ -8,6 +8,7 @@ export interface WorkingShot extends Shot {
   previewUrl: string;
 }
 
+
 /**
  * Decoding a 1600px JPEG costs about 40ms, and the officer will drag the sample
  * point around a dozen times before they are happy with it. Cache per blob.

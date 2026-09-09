@@ -57,6 +57,7 @@ export const AddReagentModal: React.FC<AddReagentModalProps> = ({
         },
       ],
       blankHex: null,
+      nonReactive: [],
       status: 'active',
       description: description.trim(),
       colourStateCount: 1,
@@ -80,7 +81,7 @@ export const AddReagentModal: React.FC<AddReagentModalProps> = ({
           boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.9), inset 0 1px 0 0 rgba(255, 255, 255, 0.25)',
         }}
       >
-        <div className="flex items-center justify-between border-b border-white/10 pb-3 font-mono">
+        <div className="flex items-center justify-between border-b border-white/10 pb-3">
           <div className="flex items-center gap-2.5">
             <div className="w-7 h-7 rounded border border-white/30 bg-white/10 flex items-center justify-center">
               <FlaskConical className="w-3.5 h-3.5 text-white" />
@@ -158,7 +159,7 @@ export const AddReagentModal: React.FC<AddReagentModalProps> = ({
                 placeholder="Optional"
                 value={absorbancePeak}
                 onChange={(e) => setAbsorbancePeak(e.target.value)}
-                className="glass-input rounded-md px-3 py-2 text-white placeholder-white/30 text-xs font-mono"
+                className="glass-input rounded-md px-3 py-2 text-white placeholder-white/30 text-xs"
               />
             </div>
 
@@ -171,12 +172,12 @@ export const AddReagentModal: React.FC<AddReagentModalProps> = ({
                   onChange={(e) => setHexColor(e.target.value)}
                   className="w-8 h-8 rounded border border-white/20 bg-transparent cursor-pointer p-0"
                 />
-                <span className="font-mono text-white/60 text-xs">{hexColor}</span>
+                <span className="text-white/60 text-xs">{hexColor}</span>
               </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="flex flex-col gap-1.5">
               <label className="text-white/70 text-[11px]">LOT NUMBER</label>
               <input
@@ -217,7 +218,7 @@ export const AddReagentModal: React.FC<AddReagentModalProps> = ({
             />
           </div>
 
-          <div className="flex items-center justify-end gap-2 border-t border-white/10 pt-4 font-mono text-xs">
+          <div className="flex items-center justify-end gap-2 border-t border-white/10 pt-4 text-xs">
             <button
               type="button"
               onClick={onClose}

@@ -117,6 +117,8 @@ export interface ReagentProfile {
   /** Optional multi-state colour scale. This is what matching really runs on. */
   colorStates: ReagentColorState[];
   blankHex: string | null;
+  /** Substances documented to give no colour change. A negative here proves nothing. */
+  nonReactive: string[];
   absorbancePeakNm: number;
   /** Free-text kit position, if the department numbers its slots. Usually blank. */
   slotNumber: string;

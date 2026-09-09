@@ -2,91 +2,138 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DrugTrace reference card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  /* Print-first. Screen view is just a preview of the sheet. */
-  @page { size: A4; margin: 12mm; }
-  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #111; margin: 0; }
-  .sheet { width: 186mm; margin: 0 auto; }
-  h1 { font-size: 15pt; margin: 0 0 2mm; }
-  p  { font-size: 8.5pt; line-height: 1.45; margin: 0 0 3mm; max-width: 150mm; }
-  .card { border: 0.4mm solid #111; border-radius: 2mm; padding: 4mm; width: 88mm; box-sizing: border-box; }
-  .cards { display: flex; gap: 6mm; flex-wrap: wrap; }
-  .label { font-size: 7pt; letter-spacing: 0.06em; text-transform: uppercase; color: #444; margin-bottom: 2mm; }
-  .patches { display: flex; gap: 0; border: 0.3mm solid #111; }
-  .patch { flex: 1; aspect-ratio: 1 / 1.1; }
-  .patch span { display: block; font-size: 5.5pt; text-align: center; padding-top: 1mm; color: #fff; mix-blend-mode: difference; }
-  .well { margin-top: 3mm; border: 0.3mm dashed #666; height: 26mm; display: flex; align-items: center; justify-content: center;
-          font-size: 7pt; color: #777; border-radius: 1.5mm; }
-  .note { font-size: 6.5pt; color: #555; margin-top: 2mm; }
-  ol { font-size: 8.5pt; line-height: 1.5; padding-left: 5mm; max-width: 150mm; }
-  .warn { border-left: 0.8mm solid #111; padding-left: 3mm; font-size: 8pt; margin-top: 4mm; }
-  @media print { .noprint { display: none; } }
+  @page { size: A4; margin: 14mm; }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    color: #111;
+    margin: 0;
+    font-size: 9pt;
+    line-height: 1.5;
+  }
+
+  .sheet { width: 182mm; margin: 0 auto; }
+
+  h1 { font-size: 15pt; font-weight: 600; margin: 0 0 3mm; letter-spacing: -0.01em; }
+  h2 { font-size: 10pt; font-weight: 600; margin: 8mm 0 2mm; letter-spacing: -0.01em; }
+  p  { margin: 0 0 3mm; max-width: 150mm; }
+
+  .card {
+    border: 0.4mm solid #111;
+    border-radius: 2mm;
+    padding: 5mm;
+    width: 88mm;
+    box-sizing: border-box;
+  }
+
+  .label {
+    font-size: 7pt;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #444;
+    margin-bottom: 2.5mm;
+  }
+
+  .patches { display: flex; border: 0.3mm solid #111; }
+  .patch { flex: 1; aspect-ratio: 1 / 1.15; position: relative; }
+  .patch b {
+    position: absolute;
+    bottom: 1mm;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 5.5pt;
+    font-weight: 600;
+  }
+
+  .well {
+    margin-top: 4mm;
+    border: 0.3mm dashed #777;
+    height: 30mm;
+    border-radius: 1.5mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7.5pt;
+    color: #777;
+  }
+
+  .tap-here {
+    margin-top: 3mm;
+    font-size: 7pt;
+    color: #444;
+    text-align: center;
+  }
+
+  ol { margin: 0 0 3mm; padding-left: 5mm; max-width: 150mm; }
+  li { margin-bottom: 1.5mm; }
+
+  .warn {
+    border-left: 0.8mm solid #111;
+    padding: 1mm 0 1mm 3mm;
+    margin-top: 5mm;
+    max-width: 150mm;
+  }
+
+  .screen-only { color: #666; font-size: 8pt; margin-top: 8mm; }
+  @media print { .screen-only { display: none; } }
 </style>
 </head>
 <body>
 <div class="sheet">
 
   <h1>DrugTrace reference card</h1>
+
   <p>
-    Print this on <strong>matte</strong> paper. Glossy stock throws specular highlights straight into the
-    camera and ruins the reading. Do not "fit to page" with colour management on — print at 100% with
-    any printer colour correction switched off, or the patches will not be the values the app expects.
+    Print on <strong>matte</strong> paper at 100% scale, with any printer colour correction
+    switched off. Glossy stock throws reflections into the lens, and scaling or colour management
+    changes the patch values away from what the app expects.
   </p>
 
-  <div class="cards">
-    <div class="card">
-      <div class="label">Card A — neutral only</div>
-      <div class="patches">
-        <div class="patch" style="background:#ffffff"><span>100%</span></div>
-        <div class="patch" style="background:#c0c0c0"><span>75%</span></div>
-        <div class="patch" style="background:#808080"><span>50%</span></div>
-        <div class="patch" style="background:#404040"><span>25%</span></div>
-        <div class="patch" style="background:#000000"><span>0%</span></div>
-      </div>
-      <div class="well">place the test pouch or well here</div>
-      <div class="note">
-        Tap the 50% patch as the reference in the app. This is all you need for the single-patch
-        white balance correction.
-      </div>
+  <div class="card">
+    <div class="label">Neutral reference</div>
+    <div class="patches">
+      <div class="patch" style="background:#ffffff"><b style="color:#333">100%</b></div>
+      <div class="patch" style="background:#c0c0c0"><b style="color:#333">75%</b></div>
+      <div class="patch" style="background:#808080"><b style="color:#fff">50%</b></div>
+      <div class="patch" style="background:#404040"><b style="color:#fff">25%</b></div>
+      <div class="patch" style="background:#000000"><b style="color:#fff">0%</b></div>
     </div>
-
-    <div class="card">
-      <div class="label">Card B — neutral plus colour</div>
-      <div class="patches">
-        <div class="patch" style="background:#ffffff"><span></span></div>
-        <div class="patch" style="background:#808080"><span></span></div>
-        <div class="patch" style="background:#3a3a3a"><span></span></div>
-        <div class="patch" style="background:#c62828"><span></span></div>
-        <div class="patch" style="background:#1565c0"><span></span></div>
-        <div class="patch" style="background:#2e7d32"><span></span></div>
-        <div class="patch" style="background:#f9a825"><span></span></div>
-        <div class="patch" style="background:#6a1b9a"><span></span></div>
-      </div>
-      <div class="well">place the test pouch or well here</div>
-      <div class="note">
-        For the 3&times;3 matrix fit, which also corrects the camera's own channel crosstalk.
-        Not wired into the UI yet — see content.md, "Not built".
-      </div>
-    </div>
+    <div class="well">place the test pouch or well here</div>
+    <div class="tap-here">Tap the 50% patch in the app to set the reference</div>
   </div>
 
-  <h1 style="margin-top:8mm">How to use it</h1>
+  <h2>How to use it</h2>
   <ol>
-    <li>Lay the card flat next to the sample so both sit in the <em>same</em> light. A card in shade next to a pouch in sun is worse than no card.</li>
-    <li>Take the <strong>before</strong> photo with the card in frame.</li>
-    <li>Apply the reagent. Wait the reagent's stated read time.</li>
-    <li>Take the <strong>after</strong> photo from the same distance and angle, card still in frame.</li>
-    <li>On each photo, tap <em>Reference patch</em> on the grey square, then <em>Reaction point</em> on the pouch.</li>
+    <li>Lay the card flat beside the sample so both sit in the same light. A card in shade next to a sample in sun is worse than no card.</li>
+    <li>Photograph the sample <strong>before</strong> the reagent goes on, card in frame.</li>
+    <li>Apply the reagent and wait the read time listed for it.</li>
+    <li>Photograph again from the same distance and angle, card still in frame.</li>
+    <li>On each photo, tap <strong>Reference patch</strong> on the 50% grey square, then <strong>Reaction point</strong> on the sample.</li>
   </ol>
 
+  <p>
+    Step 5 is what performs the correction. The app does not look for the card on its own — a grey
+    card under warm light and a coloured surface under white light produce the same pixels, so
+    marking it is the one thing that cannot be guessed. Until you tap it, the photo carries a
+    notice that the reading is uncorrected.
+  </p>
+
   <div class="warn">
-    Do not let your own shadow, or the phone's, fall across the card. The app will warn you
-    ("patch area is not uniform") but it is easier to just step aside.
+    Keep your own shadow, and the phone's, off the card. The app will warn you that the patch is
+    uneven, but it is quicker to step aside than to retake the shot.
   </div>
 
-  <p class="noprint" style="margin-top:6mm;color:#777">
-    Printed sizes: each card is 88&nbsp;mm wide, so two fit side by side on A4 and one fits in a shirt pocket.
+  <p class="screen-only">
+    The card measures 88&nbsp;mm across, so it fits a shirt pocket. Only the grey scale is needed;
+    the other patches are there to judge exposure by eye.
   </p>
 </div>
 </body>

@@ -20,6 +20,7 @@ interface Props {
   stage: CaptureStage;
   shot: WorkingShot | null;
   onShotChange: (shot: WorkingShot | null) => void;
+  onCaptured?: (stage: CaptureStage) => void;
   onToast: (title: string, message: string, icon?: string) => void;
   /** Set on the first capture and reused for the second so both share exposure. */
   holdExposure: boolean;
@@ -40,6 +41,7 @@ export const SpecimenViewport: React.FC<Props> = ({
   stage,
   shot,
   onShotChange,
+  onCaptured,
   onToast,
   holdExposure,
 }) => {
@@ -66,6 +68,7 @@ export const SpecimenViewport: React.FC<Props> = ({
         const next = await createShot(blob, stage, source);
         onShotChange(next);
         setMarkerMode('reference');
+        onCaptured?.(stage);
       } catch (err) {
         setUploadError(
           err instanceof Error ? err.message : 'That file could not be read as an image.'
@@ -74,7 +77,7 @@ export const SpecimenViewport: React.FC<Props> = ({
         setBusy(false);
       }
     },
-    [onShotChange, shot, stage]
+    [onCaptured, onShotChange, shot, stage]
   );
 
   const capture = async () => {
@@ -148,15 +151,24 @@ export const SpecimenViewport: React.FC<Props> = ({
               : 'border-white/15 hover:border-white/25 bg-white/[0.02]'
         }`}
       >
+        <video
+          ref={videoRef}
+          autoPlay
+          playsInline
+          muted
+          className={`absolute inset-0 w-full h-full object-cover bg-black ${
+            camera.active ? 'z-10' : 'invisible'
+          }`}
+        />
+
         {camera.active ? (
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black">
-            <video ref={videoRef} autoPlay playsInline muted className="w-full h-full object-cover" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
             <div className="absolute inset-8 pointer-events-none border border-white/40 rounded-lg flex items-center justify-center">
               <div className="w-2 h-2 rounded-full bg-white/70" />
             </div>
 
             <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 z-20">
-              <span className="font-mono text-[10px] px-2 py-1 rounded bg-black/70 border border-white/15 text-white/70">
+              <span className="text-[10px] px-2 py-1 rounded bg-black/70 border border-white/15 text-white/70">
                 {STAGE_COPY[stage].title.toUpperCase()}
               </span>
               <div className="flex items-center gap-1.5">
@@ -226,8 +238,13 @@ export const SpecimenViewport: React.FC<Props> = ({
                   swatch={shot.measurement?.hex}
                 />
               )}
-              {reference && (
+              {reference ? (
                 <Marker point={reference} active={markerMode === 'reference'} label="Reference" dashed />
+              ) : (
+                <div className="absolute top-2 left-2 right-2 flex items-center gap-1.5 px-2 py-1.5 rounded bg-white text-black text-[10px] font-semibold">
+                  <AlertCircle className="w-3 h-3 shrink-0" />
+                  <span>No reference card marked — colour is uncorrected</span>
+                </div>
               )}
             </div>
           </div>
@@ -283,7 +300,7 @@ export const SpecimenViewport: React.FC<Props> = ({
                 key={mode}
                 type="button"
                 onClick={() => setMarkerMode(mode)}
-                className={`px-2.5 py-1 rounded font-mono text-[10px] transition-colors ${
+                className={`px-2.5 py-1 rounded text-[10px] transition-colors ${
                   markerMode === mode ? 'bg-white text-black font-semibold' : 'text-white/60 hover:text-white'
                 }`}
               >
@@ -292,7 +309,7 @@ export const SpecimenViewport: React.FC<Props> = ({
             ))}
           </div>
 
-          <div className="flex items-center gap-3 text-[11px] font-mono">
+          <div className="flex items-center gap-3 text-[11px]">
             {camera.locked && (
               <span className="flex items-center gap-1 text-white/60">
                 <Lock className="w-3 h-3" />
@@ -311,6 +328,16 @@ export const SpecimenViewport: React.FC<Props> = ({
         </div>
       )}
 
+      {shot?.calibration && !shot.calibration.quality.usable && (
+        <div className="text-xs text-white/80 bg-white/10 border border-white/25 p-3 rounded flex items-start gap-2">
+          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+          <span>
+            That patch cannot be used as a reference.{' '}
+            {shot.calibration.quality.warnings[0]}
+          </span>
+        </div>
+      )}
+
       {shot && (
         <p className="text-[11px] text-white/40 leading-relaxed flex items-start gap-1.5">
           <Crosshair className="w-3 h-3 mt-0.5 shrink-0" />
@@ -324,7 +351,7 @@ export const SpecimenViewport: React.FC<Props> = ({
         </p>
       )}
 
-      <input ref={fileRef} type="file" accept="image/*" capture="environment" onChange={onFile} className="hidden" />
+      <input ref={fileRef} type="file" accept="image/*" onChange={onFile} className="hidden" />
     </div>
   );
 };

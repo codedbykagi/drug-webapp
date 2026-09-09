@@ -143,7 +143,7 @@ export const CaseLog: React.FC<Props> = ({ records, onOpenReport, onDelete }) =>
 
               {open && (
                 <div className="flex flex-col gap-3 pl-9">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 font-mono text-[11px]">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-[11px]">
                     <Row label="Reagent" value={record.reagentName || '—'} />
                     <Row label="Suspected" value={record.suspectedDrug || '—'} />
                     <Row label="Reason" value={record.reason || '—'} />
@@ -177,7 +177,7 @@ export const CaseLog: React.FC<Props> = ({ records, onOpenReport, onDelete }) =>
                     <p className="text-[11px] text-white/60 leading-relaxed">{record.notes}</p>
                   )}
 
-                  <div className="flex items-center gap-2 font-mono text-[10px] text-white/40">
+                  <div className="flex items-center gap-2 text-[10px] text-white/40">
                     <Link2 className="w-3 h-3 shrink-0" />
                     <span className="truncate" title={record.sha256Hash}>
                       {shortHash(record.sha256Hash)} ← {shortHash(record.previousHash)}
@@ -225,7 +225,7 @@ export const CaseLog: React.FC<Props> = ({ records, onOpenReport, onDelete }) =>
 const Row: React.FC<{ label: string; value: React.ReactNode }> = ({ label, value }) => (
   <div className="flex flex-col gap-0.5">
     <span className="text-white/35 text-[9px] uppercase tracking-wider">{label}</span>
-    <span className="text-white/75 break-words">{value}</span>
+    <span className="text-white/75 break-words font-mono">{value}</span>
   </div>
 );
 
@@ -246,7 +246,7 @@ const ShotThumb: React.FC<{ blob: Blob; stage: string }> = ({ blob, stage }) => 
         alt={`${stage} frame`}
         className="w-20 h-20 object-cover rounded border border-white/15 group-hover:border-white/40 transition-colors"
       />
-      <span className="absolute bottom-1 left-1 font-mono text-[8px] uppercase bg-black/80 text-white/80 px-1 rounded">
+      <span className="absolute bottom-1 left-1 text-[8px] uppercase bg-black/80 text-white/80 px-1 rounded">
         {stage}
       </span>
     </a>

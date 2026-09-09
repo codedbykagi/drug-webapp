@@ -141,11 +141,21 @@ export const FieldTestScreen: React.FC<Props> = ({
       ? 'No colour change detected'
       : status === 'positive' && best
         ? best.analyte
-        : afterMeasurement
-          ? `Unmatched — ${describeHue(afterMeasurement.lab).toLowerCase()}`
-          : 'Awaiting reaction photo';
+        : !afterMeasurement
+          ? 'Awaiting reaction photo'
+          : !reagents.length
+            ? `Measured ${describeHue(afterMeasurement.lab).toLowerCase()} — no registry to compare against`
+            : `Unmatched — ${describeHue(afterMeasurement.lab).toLowerCase()}`;
 
   const matchQuality = describeMatch(status === 'negative' ? null : (best?.deltaE ?? null));
+
+  /** What the analysis still needs, in the order the officer should supply it. */
+  const blockers: string[] = [];
+  if (!shots.before) blockers.push('Capture the before photo');
+  if (!shots.after) blockers.push('Capture the after photo');
+  if (shots.after && !after?.neutralPoint) blockers.push('Tap the reference card on the after photo');
+  if (!reagents.length) blockers.push('Import the reagent registry');
+  const analysed = shots.before !== null && shots.after !== null;
 
   const colourShift =
     beforeMeasurement && afterMeasurement
@@ -159,6 +169,14 @@ export const FieldTestScreen: React.FC<Props> = ({
 
   const setShot = (target: CaptureStage) => (shot: WorkingShot | null) =>
     setShots((prev) => ({ ...prev, [target]: shot }));
+
+  const onCaptured = (captured: CaptureStage) => {
+    // The location does not change between the two frames, so fix it once on
+    // the first photo rather than at save time, where a slow GPS lock would
+    // stall the officer at the one moment they want the app out of the way.
+    if (!geo && geoState !== 'locating') void locate();
+    if (captured === 'before' && !shots.after) setStage('after');
+  };
 
   const locate = async () => {
     setGeoState('locating');
@@ -189,6 +207,12 @@ export const FieldTestScreen: React.FC<Props> = ({
   const save = async () => {
     if (!shots.before && !shots.after) {
       onTriggerToast('Nothing to file', 'Capture at least one photo first', 'alert');
+      return;
+    }
+    if (uncorrected && !confirm(
+      'No reference card was marked, so the colour reading is uncorrected and cannot be compared '
+      + 'with readings taken under different lighting.\n\nFile the record anyway?'
+    )) {
       return;
     }
     setSaving(true);
@@ -305,7 +329,7 @@ export const FieldTestScreen: React.FC<Props> = ({
   return (
     <div id="field-test-intake-screen" className="max-w-6xl mx-auto flex flex-col gap-6">
       <div
-        className="glass-panel rounded-lg px-5 py-3 flex flex-wrap items-center justify-between gap-4 font-sans text-xs"
+        className="glass-panel rounded-lg px-5 py-3 flex flex-wrap items-center justify-between gap-4 text-xs"
         style={{ ...panel, boxShadow: 'rgba(255, 255, 255, 0.22) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 15px 30px -10px' }}
       >
         <div className="flex items-center gap-3">
@@ -319,7 +343,7 @@ export const FieldTestScreen: React.FC<Props> = ({
         <button
           type="button"
           onClick={() => void locate()}
-          className="flex items-center gap-2 text-white/60 hover:text-white font-mono text-[11px] transition-colors"
+          className="flex items-center gap-2 text-white/60 hover:text-white text-[11px] transition-colors"
         >
           <MapPin className="w-3.5 h-3.5" />
           <span>
@@ -337,7 +361,7 @@ export const FieldTestScreen: React.FC<Props> = ({
           <section className="glass-panel rounded-lg p-6 flex flex-col gap-5" style={panel}>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="flex flex-col gap-0.5">
-                <h2 className="text-sm font-semibold text-white tracking-wide">Test specimen photos</h2>
+                <h2 className="text-sm font-semibold text-white tracking-tight">Test specimen photos</h2>
                 <p className="text-xs text-white/50">
                   Two frames: one before the reagent, one after. Keep the reference card in both.
                 </p>
@@ -349,7 +373,7 @@ export const FieldTestScreen: React.FC<Props> = ({
                     key={s}
                     type="button"
                     onClick={() => setStage(s)}
-                    className={`px-2.5 py-1 rounded font-mono text-[10px] transition-colors flex items-center gap-1.5 ${
+                    className={`px-2.5 py-1 rounded text-[10px] transition-colors flex items-center gap-1.5 ${
                       stage === s ? 'bg-white text-black font-semibold' : 'text-white/60 hover:text-white'
                     }`}
                   >
@@ -369,6 +393,7 @@ export const FieldTestScreen: React.FC<Props> = ({
               stage={stage}
               shot={shots[stage]}
               onShotChange={setShot(stage)}
+              onCaptured={onCaptured}
               onToast={onTriggerToast}
               holdExposure={stage === 'before'}
             />
@@ -391,12 +416,12 @@ export const FieldTestScreen: React.FC<Props> = ({
           <section className="glass-panel rounded-lg p-6 flex flex-col gap-5" style={panel}>
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
               <div className="flex flex-col gap-0.5">
-                <h3 className="text-sm font-semibold text-white tracking-wide">
+                <h3 className="text-sm font-semibold text-white tracking-tight">
                   Test details &amp; officer information
                 </h3>
                 <p className="text-xs text-white/50">Recorded with the photos and sealed on save.</p>
               </div>
-              <span className="text-xs font-mono text-white/50 px-2 py-0.5 rounded border border-white/10 bg-white/5">
+              <span className="text-xs text-white/50 px-2 py-0.5 rounded border border-white/10 bg-white/5">
                 {clock.toISOString().slice(11, 19)} UTC
               </span>
             </div>
@@ -423,7 +448,7 @@ export const FieldTestScreen: React.FC<Props> = ({
                   type="text"
                   placeholder="Optional"
                   {...field('officerBadge')}
-                  className="glass-input rounded-md px-3 py-2 text-xs text-white placeholder-white/30 font-mono"
+                  className="glass-input rounded-md px-3 py-2 text-xs text-white placeholder-white/30"
                 />
               </Field>
 
@@ -512,7 +537,7 @@ export const FieldTestScreen: React.FC<Props> = ({
           <section className="glass-panel rounded-lg p-6 flex flex-col gap-5" style={panel}>
             <div className="flex items-center justify-between border-b border-white/10 pb-3 gap-3">
               <div className="flex flex-col gap-0.5">
-                <h3 className="text-sm font-semibold text-white tracking-wide">Presumptive result</h3>
+                <h3 className="text-sm font-semibold text-white tracking-tight">Presumptive result</h3>
                 <span className="text-xs text-white/50">
                   {override ? 'Set manually' : 'Read from the photos'}
                 </span>
@@ -524,7 +549,7 @@ export const FieldTestScreen: React.FC<Props> = ({
                     key={s}
                     type="button"
                     onClick={() => setOverride(override === s ? null : s)}
-                    className={`px-2 py-1 rounded font-mono text-[10px] transition-colors capitalize ${
+                    className={`px-2 py-1 rounded text-[10px] transition-colors capitalize ${
                       status === s ? 'bg-white text-black font-semibold' : 'text-white/60 hover:text-white'
                     }`}
                   >
@@ -533,6 +558,22 @@ export const FieldTestScreen: React.FC<Props> = ({
                 ))}
               </div>
             </div>
+
+            {blockers.length > 0 && (
+              <div className="flex flex-col gap-2 rounded-lg border border-white/15 bg-white/[0.03] p-4">
+                <span className="text-[10px] text-white/45 uppercase tracking-wider">
+                  {analysed ? 'Result shown, but incomplete' : 'Waiting on'}
+                </span>
+                {blockers.map((b, i) => (
+                  <div key={b} className="flex items-center gap-2.5 text-xs text-white/70">
+                    <span className="w-4 h-4 rounded-full border border-white/25 flex items-center justify-center text-[9px] text-white/50 shrink-0">
+                      {i + 1}
+                    </span>
+                    <span>{b}</span>
+                  </div>
+                ))}
+              </div>
+            )}
 
             <div
               className="glass-panel-elevated rounded-lg p-5 flex flex-col gap-4"
@@ -569,7 +610,7 @@ export const FieldTestScreen: React.FC<Props> = ({
 
               <div className="flex flex-col gap-2.5 text-xs">
                 <Readout label="Match quality" title={matchQuality.detail}>
-                  <span className="font-mono">
+                  <span className="">
                     {matchQuality.label}
                     {best && status !== 'negative' && (
                       <span className="text-white/40"> · ΔE {best.deltaE.toFixed(1)}</span>
@@ -609,9 +650,21 @@ export const FieldTestScreen: React.FC<Props> = ({
               </div>
             </div>
 
+            {uncorrected && (
+              <div className="flex items-start gap-2 rounded-lg border border-white/30 bg-white/10 p-3 text-xs text-white">
+                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                <span>
+                  <strong className="font-semibold">Uncorrected reading.</strong> No reference card
+                  was marked, so this colour still carries whatever the lighting did to it. It is
+                  recorded and filed, but it is not comparable with readings taken under different
+                  light.
+                </span>
+              </div>
+            )}
+
             {matches.length > 1 && (
               <div className="flex flex-col gap-1.5">
-                <span className="text-[10px] font-mono text-white/40 uppercase tracking-wider">
+                <span className="text-[10px] text-white/40 uppercase tracking-wider">
                   Other candidates
                 </span>
                 {matches.slice(1).map((m) => (

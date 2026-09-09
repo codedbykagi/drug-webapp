@@ -4,6 +4,7 @@ import { CalibrationData } from '../types';
 
 interface TopHeaderProps {
   calibration: CalibrationData;
+  remote: boolean;
   onOpenCalibrate: () => void;
   onTriggerSync: () => void;
   onToggleMobileMenu: () => void;
@@ -12,6 +13,7 @@ interface TopHeaderProps {
 
 export const TopHeader: React.FC<TopHeaderProps> = ({
   calibration,
+  remote,
   onOpenCalibrate,
   onTriggerSync,
   onToggleMobileMenu,
@@ -43,7 +45,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
           'rgba(255, 255, 255, 0.16) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.6) 0px 10px 30px -10px',
       }}
     >
-      <div className="flex items-center gap-3 lg:gap-4 font-mono text-xs">
+      <div className="flex items-center gap-3 lg:gap-4 text-xs">
         <button
           id="btn-mobile-menu"
           onClick={onToggleMobileMenu}
@@ -62,28 +64,19 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
 
         <div className="hidden sm:block h-3 w-[1px] bg-white/20"></div>
 
-        <div
-          onClick={onOpenCalibrate}
-          className="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded border border-white/15 bg-white/5 text-white/80 cursor-pointer hover:bg-white/10 transition-colors"
-          title="Lighting reference"
-        >
-          <Sliders className="w-3 h-3 text-white/60" />
-          <span className="text-[11px] tracking-tight">
-            {calibration.calibrated ? `Light ref ${calibration.scorePercent}%` : 'Set light ref'}
-          </span>
-        </div>
-
-        <div className="hidden md:block h-3 w-[1px] bg-white/20"></div>
-
-        <div className="hidden md:flex items-center gap-2 text-white/60 text-[11px]">
+        <div className="hidden sm:flex items-center gap-2 text-white/60 text-[11px]">
           <span
             className={`w-1.5 h-1.5 rounded-full ${calibration.calibrated ? 'bg-white' : 'bg-white/30'}`}
           ></span>
-          <span>{calibration.calibrated ? 'Reference set' : 'No reference'}</span>
+          <span>
+            {calibration.calibrated
+              ? `Stored light reference ${calibration.scorePercent}%`
+              : 'No stored light reference'}
+          </span>
         </div>
       </div>
 
-      <div className="flex items-center gap-2 lg:gap-2.5 font-mono text-xs">
+      <div className="flex items-center gap-2 lg:gap-2.5 text-xs">
         <button
           id="btn-calibrate"
           type="button"
@@ -91,8 +84,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
           className="flex items-center gap-1.5 px-2.5 lg:px-3 py-1.5 rounded border border-white/15 bg-white/5 hover:bg-white/10 text-white transition-all text-xs"
         >
           <Sliders className="w-3.5 h-3.5" />
-          <span className="hidden xs:inline">CALIBRATE</span>
-          <span className="xs:hidden">CAL</span>
+          <span>LIGHT REF</span>
         </button>
 
         <button
@@ -105,7 +97,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
           }`}
         >
           <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin' : ''}`} />
-          <span>{isSyncing ? 'SYNCING...' : 'SYNC'}</span>
+          <span>{isSyncing ? (remote ? 'SYNCING' : 'RELOADING') : remote ? 'SYNC' : 'RELOAD'}</span>
         </button>
       </div>
     </header>

@@ -73,7 +73,7 @@ export const AssistantPanel: React.FC<Props> = ({ isOpen, onClose, reagents }) =
             <div className="w-7 h-7 rounded border border-white/25 bg-white/10 flex items-center justify-center">
               <Sparkles className="w-3.5 h-3.5 text-white" />
             </div>
-            <div className="flex flex-col font-mono">
+            <div className="flex flex-col">
               <span className="text-xs font-semibold text-white tracking-wide uppercase">
                 Reagent assistant
               </span>
@@ -206,7 +206,7 @@ export const AssistantPanel: React.FC<Props> = ({ isOpen, onClose, reagents }) =
             <button
               type="button"
               onClick={() => setTurns([])}
-              className="self-start text-[10px] font-mono text-white/35 hover:text-white/70 transition-colors"
+              className="self-start text-[10px] text-white/35 hover:text-white/70 transition-colors"
             >
               Clear
             </button>

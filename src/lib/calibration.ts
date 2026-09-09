@@ -221,3 +221,20 @@ export function describeIlluminant(cct: number | null): string {
   if (cct < 7000) return 'Overcast daylight';
   return 'Shade / blue cast';
 }
+
+/*
+ * There is deliberately no automatic reference-card detector here, and there
+ * should not be one.
+ *
+ * A grey card photographed under tungsten light and an orange desk photographed
+ * under daylight produce the same pixels — (225, 180, 126) in both cases. No
+ * algorithm can separate them from the image alone, because the difference is
+ * not in the image. That ambiguity is the colour constancy problem, and it is
+ * the whole reason this project uses a physical reference instead of estimating
+ * the illuminant.
+ *
+ * A detector would therefore be a guess wearing the costume of a measurement,
+ * and it would fail in the direction that matters: quietly reporting a
+ * corrected reading that was never corrected. The app asks the officer to mark
+ * the card, and says plainly when they have not.
+ */

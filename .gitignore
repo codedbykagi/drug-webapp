@@ -9,3 +9,7 @@ coverage/
 
 server/data/
 .env.local
+
+README.md
+context.md
+content.md
