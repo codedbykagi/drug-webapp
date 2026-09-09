@@ -10,6 +10,6 @@ coverage/
 server/data/
 .env.local
 
-README.md
-context.md
-content.md
+1.md
+2.md
+3.md
